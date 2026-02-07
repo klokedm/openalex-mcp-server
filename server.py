@@ -20,6 +20,11 @@ OPENALEX_EMAIL = os.getenv("OPENALEX_EMAIL")
 if OPENALEX_EMAIL:
     pyalex.config.email = OPENALEX_EMAIL
 
+# Use environment variable for API authentication (optional)
+OPENALEX_API_KEY = os.getenv("OPENALEX_API_KEY", "").strip()
+if OPENALEX_API_KEY:
+    pyalex.config.api_key = OPENALEX_API_KEY
+
 # Configure retries for robustness
 pyalex.config.max_retries = 3
 pyalex.config.retry_backoff_factor = 0.5

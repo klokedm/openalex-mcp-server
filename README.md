@@ -92,6 +92,11 @@ This also means that the openalex search functionality does not search over the 
     ```
     If this variable is not set, the server will use the anonymous pool, which has stricter rate limits.
 
+*   **OpenAlex API key (optional):** To authenticate requests with OpenAlex, set the `OPENALEX_API_KEY` environment variable.
+    ```bash
+    export OPENALEX_API_KEY="your_openalex_api_key"
+    ```
+
 ## MCP Integration
 
 To use this server with an MCP client (like the Claude VS Code Extension or Claude Desktop), you need to add its configuration to the client's settings file.
@@ -111,7 +116,8 @@ To use this server with an MCP client (like the Claude VS Code Extension or Clau
         "--directory", "/YOUR/INSTALL/DIRECTORY/openalex-mcp-server", "run", "server.py"
       ],
       "env": {
-        "OPENALEX_EMAIL": "your.email@example.com" // Set your email here!
+        "OPENALEX_EMAIL": "your.email@example.com", // Set your email here
+        "OPENALEX_API_KEY": "your_openalex_api_key" // Optional API key
       },
       "transportType": "stdio"
     }
@@ -120,6 +126,7 @@ To use this server with an MCP client (like the Claude VS Code Extension or Clau
 ```
 
 *   Replace `"your.email@example.com"` with your actual email address.
+*   Replace `"your_openalex_api_key"` with your actual OpenAlex API key if you have one.
 *   Restart your MCP client (e.g., reload the VS Code window) after adding the configuration.
 
 ## Usage
@@ -176,10 +183,10 @@ To run the server locally for development and testing:
 
 1.  Ensure dependencies are installed (see Installation).
 2.  Set the `OPENALEX_EMAIL` environment variable.
-3.  `mcp dev server.py`
+3.  Optionally set the `OPENALEX_API_KEY` environment variable.
+4.  `mcp dev server.py`
 
 ## Dependencies
 
 *   [mcp-sdk](https://github.com/modelcontextprotocol/python-sdk): For MCP server implementation.
 *   [pyalex](https://github.com/J535D165/pyalex): For interacting with the OpenAlex API.
-
